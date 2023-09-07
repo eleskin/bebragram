@@ -1,0 +1,31 @@
+/* MessengerHeader.module.css */
+
+.Header {
+    display: flex;
+    align-items: center;
+    background-color: yellow; /* Желтый фон */
+    color: black; /* Черный текст */
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.backButton {
+    background-color: black; /* Черный цвет кнопки */
+    color: yellow; /* Желтый цвет иконки */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.backButton:hover {
+    background-color: darkgray; /* Изменение цвета кнопки при наведении */
+}
+
+.chatInfo {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.chatName {
+    margin: 0;
+}

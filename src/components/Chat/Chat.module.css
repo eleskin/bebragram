@@ -1,0 +1,83 @@
+/* Chat.module.css */
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: #f0f0f0; /* Светло-серый цвет фона (как в Windows 11) */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+.chatHeader {
+    padding: 10px;
+    background-color: #000; /* Черный цвет для шапки (обновлено) */
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.chatName {
+    color: #FFD700; /* Желтый цвет для логотипа (обновлено) */
+    margin: 0;
+    font-size: 18px;
+}
+
+.chatMessages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.message {
+    background-color: #fff; /* Белый фон для сообщения */
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Тень сообщения */
+}
+
+.message i {
+    font-style: italic;
+    font-weight: bold;
+    color: #000; /* Черный цвет для имени пользователя (обновлено) */
+}
+
+.message span {
+    font-size: 14px;
+    color: #000; /* Черный цвет текста сообщения (обновлено) */
+}
+
+.messageForm {
+    display: flex;
+    padding: 10px;
+    background-color: #ffd200; /* Желтый цвет для формы сообщения (обновлено) */
+    border-top: 1px solid #ccc; /* Светло-серая горизонтальная линия */
+}
+
+.messageInput {
+    flex: 1;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    outline: none;
+    background-color: #f0f0f0; /* Светло-серый цвет для ввода сообщения (как в Windows 11) */
+    color: #000; /* Черный цвет текста во вводе сообщения */
+}
+
+.sendMessageButton {
+    background-color: #000; /* Черный цвет для кнопки отправки (обновлено) */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.sendMessageButton:hover {
+    background-color: #333; /* Темнее черный цвет при наведении на кнопку */
+}

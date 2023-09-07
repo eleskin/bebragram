@@ -1,0 +1,49 @@
+/* Auth.module.css */
+
+.authContainer {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+}
+
+.formGroup {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+}
+
+.submitButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #0078D4; /* Синий цвет для кнопки */
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submitButton:hover {
+    background-color: #0056b3; /* Темнее синий цвет при наведении на кнопку */
+}
