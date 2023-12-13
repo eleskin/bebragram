@@ -71,7 +71,7 @@ const Chat: React.FC<ChatProps> = ({chatName}) => {
 					className={styles.messageInput}
 					placeholder="Введите сообщение..."
 					value={newMessage}
-					onChange={handleInputChange}
+					onInput={handleInputChange}
 				/>
 				<button type="submit" className={styles.sendMessageButton}>
 					Отправить
