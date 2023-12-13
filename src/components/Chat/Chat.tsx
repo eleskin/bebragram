@@ -1,11 +1,7 @@
 import React, {useState, ChangeEvent, FormEvent, useRef, useEffect} from 'react';
 import styles from './Chat.module.css'; // Подключаем CSS-модуль
 
-interface ChatProps {
-	chatName: string;
-}
-
-const Chat: React.FC<ChatProps> = ({chatName}) => {
+const Chat: React.FC = () => {
 	const [messages, setMessages] = useState<{ message: string; user: string }[]>([
 		{ user: "Александр Елескин", message: "Привет, как ты считаешь, как на Украине действуют американские кураторы?" },
 		{ user: "Александр Власов", message: "Здравствуй, Александр. Это интересная тема. Мне кажется, они оказывают влияние на политику и экономику." },
@@ -54,7 +50,7 @@ const Chat: React.FC<ChatProps> = ({chatName}) => {
 	return (
 		<div className={styles.chat}>
 			<div className={styles.chatHeader}>
-				<h2 className={styles.chatName}>{chatName}</h2>
+				<h2 className={styles.chatName}>Bebragram</h2>
 			</div>
 			<div className={styles.chatMessages} ref={chatContainerRef}>
 				{messages.map((message, index) => (
