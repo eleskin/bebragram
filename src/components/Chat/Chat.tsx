@@ -29,11 +29,14 @@ const Chat: React.FC = () => {
 	const chatContainerRef = useRef<HTMLDivElement>(null);
 	
 	useEffect(() => {
-		// Проверяем, что chatContainerRef.current не равен null
 		if (chatContainerRef.current) {
 			chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
 		}
 	}, [messages]);
+	
+	useEffect(() => {
+		console.log(sessionStorage.getItem('email'));
+	}, []);
 	
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setNewMessage(e.target.value);
