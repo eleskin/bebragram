@@ -4,22 +4,21 @@ import {useNavigate} from 'react-router-dom';
 const Login = () => {
 	const navigate = useNavigate();
 	
-	const [email, setEmail] = useState('');
+	const [name, setName] = useState('');
 	// const [password, setPassword] = useState('');
 	
 	const handleFormSubmit = (event: FormEvent) => {
 		event.preventDefault();
-		sessionStorage.setItem('email', email);
+		sessionStorage.setItem('name', name);
 		navigate('/');
 	};
 	
 	return (
 		<form onSubmit={handleFormSubmit}>
 			<input
-				type="email"
-				placeholder="Email"
-				value={email}
-				onInput={(event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)}
+				placeholder="Имя"
+				value={name}
+				onInput={(event: ChangeEvent<HTMLInputElement>) => setName(event.target.value)}
 			/>
 			{/*<input*/}
 			{/*	type="password"*/}

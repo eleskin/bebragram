@@ -32,7 +32,7 @@ const Chat: React.FC = () => {
 		if (newMessage.trim() !== '') {
 			if (socket.readyState === 1) {
 				socket.send(JSON.stringify({
-					user: sessionStorage.getItem('email') ?? '',
+					user: sessionStorage.getItem('name') ?? '',
 					message: newMessage,
 				}));
 			}
