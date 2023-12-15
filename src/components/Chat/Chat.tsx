@@ -7,6 +7,8 @@ const Chat: React.FC = () => {
 	const [messages, setMessages] = useState<{ _id: string; message: string; user: string }[]>([]);
 	const [newMessage, setNewMessage] = useState<string>('');
 	
+	const [editingMessageId, setEditingMessageId] = useState<string>('');
+	
 	const chatContainerRef = useRef<HTMLDivElement>(null);
 	
 	useEffect(() => {
@@ -32,7 +34,8 @@ const Chat: React.FC = () => {
 		if (newMessage.trim() !== '') {
 			if (socket.readyState === 1) {
 				socket.send(JSON.stringify({
-					method: 'POST',
+					method: editingMessageId ? 'PATCH' : 'POST',
+					id: editingMessageId || '',
 					user: sessionStorage.getItem('name') ?? '',
 					message: newMessage,
 				}));
@@ -46,11 +49,21 @@ const Chat: React.FC = () => {
 		}
 	};
 	
+	const handleEditMessage = (id: string, text: string) => {
+		setEditingMessageId(id);
+		setNewMessage(text);
+	};
+	
 	const handleDeleteMessage = (id: string) => {
 		socket.send(JSON.stringify({
 			method: 'DELETE',
 			id
 		}));
+	};
+	
+	const handleEditCancelClick = () => {
+		setNewMessage('');
+		setEditingMessageId('');
 	};
 	
 	return (
@@ -61,7 +74,10 @@ const Chat: React.FC = () => {
 			<div className={styles.chatMessages} ref={chatContainerRef}>
 				{messages.map((message) => (
 					<div key={message._id} className={styles.message}>
-						<i>{message.user}</i>
+						<div>
+							<i>{message.user}</i>
+							<button onClick={handleEditMessage.bind(null, message._id, message.message)}>Редактировать</button>
+						</div>
 						<br/>
 						<div>
 							<span>{message.message}</span>
@@ -79,8 +95,9 @@ const Chat: React.FC = () => {
 					onInput={handleInputChange}
 				/>
 				<button type="submit" className={styles.sendMessageButton}>
-					Отправить
+					{editingMessageId ? 'Сохранить' : 'Отправить'}
 				</button>
+				{editingMessageId ? <button onClick={handleEditCancelClick}>Отмена</button> : null}
 			</form>
 		</div>
 	);
