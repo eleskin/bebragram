@@ -4,7 +4,7 @@ import styles from './Chat.module.css'; // Подключаем CSS-модуль
 const Chat: React.FC = () => {
 	const socket = new WebSocket('ws://localhost:8000/api/chat');
 	
-	const [messages, setMessages] = useState<{ message: string; user: string }[]>([]);
+	const [messages, setMessages] = useState<{ _id: string; message: string; user: string }[]>([]);
 	const [newMessage, setNewMessage] = useState<string>('');
 	
 	const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -32,18 +32,25 @@ const Chat: React.FC = () => {
 		if (newMessage.trim() !== '') {
 			if (socket.readyState === 1) {
 				socket.send(JSON.stringify({
+					method: 'POST',
 					user: sessionStorage.getItem('name') ?? '',
 					message: newMessage,
 				}));
 			}
 			
 			socket.addEventListener('message', (event) => {
-				console.log(event);
 				setMessages(JSON.parse(event.data));
 			});
 			
 			setNewMessage('');
 		}
+	};
+	
+	const handleDeleteMessage = (id: string) => {
+		socket.send(JSON.stringify({
+			method: 'DELETE',
+			id
+		}));
 	};
 	
 	return (
@@ -52,11 +59,14 @@ const Chat: React.FC = () => {
 				<h2 className={styles.chatName}>Bebragram</h2>
 			</div>
 			<div className={styles.chatMessages} ref={chatContainerRef}>
-				{messages.map((message, index) => (
-					<div key={index} className={styles.message}>
+				{messages.map((message) => (
+					<div key={message._id} className={styles.message}>
 						<i>{message.user}</i>
 						<br/>
-						<span>{message.message}</span>
+						<div>
+							<span>{message.message}</span>
+							<button onClick={handleDeleteMessage.bind(null, message._id)}>Удалить</button>
+						</div>
 					</div>
 				))}
 			</div>

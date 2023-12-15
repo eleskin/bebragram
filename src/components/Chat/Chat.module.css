@@ -8,7 +8,7 @@
     background-color: #f0f0f0; /* Светло-серый цвет фона (как в Windows 11) */
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Тень */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
 }
 
 .chatHeader {
@@ -36,7 +36,14 @@
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Тень сообщения */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень сообщения */
+}
+
+.message > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .message i {
